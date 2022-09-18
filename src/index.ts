@@ -3,9 +3,9 @@ import "reflect-metadata";
 import express from "express";
 import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
-import { TaskResolver } from "resolvers/TaskResolver";
-import { SubTaskResolver } from "resolvers/SubTaskResolver";
-import { BoardResolver } from "resolvers/BoardResolver";
+import { TaskResolver } from "./resolvers/TaskResolver";
+import { SubTaskResolver } from "./resolvers/SubTaskResolver";
+import { BoardResolver } from "./resolvers/BoardResolver";
 
 (async () => {
 	const app = express();
@@ -19,6 +19,7 @@ import { BoardResolver } from "resolvers/BoardResolver";
 		}),
 	});
 
+	await apolloServer.start();
 	apolloServer.applyMiddleware({ app });
 
 	app.listen(4000, () => {

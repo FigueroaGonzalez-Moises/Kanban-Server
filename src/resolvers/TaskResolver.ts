@@ -1,11 +1,15 @@
-import { Mutation, Resolver } from "type-graphql";
+import { Mutation, Query, Resolver } from "type-graphql";
 
 @Resolver()
 export class TaskResolver {
-	@Mutation(() => String)
-	CreateNewTask() {
-		//do something
-
-		return "success code here";
+	@Query(() => String)
+	hello() {
+		return "hello";
 	}
+	// @Mutation(() => String)
+	// CreateNewTask() {
+	// 	//do something
+
+	// 	return "success code here";
+	// }
 }
