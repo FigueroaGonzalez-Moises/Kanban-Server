@@ -3,7 +3,9 @@ import "reflect-metadata";
 import express from "express";
 import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
-import { KanbanResolver } from "resolvers/Resolver";
+import { TaskResolver } from "resolvers/TaskResolver";
+import { SubTaskResolver } from "resolvers/SubTaskResolver";
+import { BoardResolver } from "resolvers/BoardResolver";
 
 (async () => {
 	const app = express();
@@ -13,7 +15,7 @@ import { KanbanResolver } from "resolvers/Resolver";
 
 	const apolloServer = new ApolloServer({
 		schema: await buildSchema({
-			resolvers: [KanbanResolver],
+			resolvers: [TaskResolver, SubTaskResolver, BoardResolver],
 		}),
 	});
 
